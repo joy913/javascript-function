@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+	function print_scores_chart(arr) {
+      		var max = 0;
+		for(var i = 0; i < arr.length; i++){
+			if(max < arr[i]){
+				max = arr[i];
+			}
+		}
+		for(var i = max; i >= 0; i--) {
+			var a = '';
+			
+			for(var j = 0; j < arr.length; j++){
+				if(arr[j] > i){
+					a += '*';
+				} else {
+					a += ' ';
+				}
+			}
+			console.log(a);
+		}
+		console.log('---------');	
+	}
+        var arrs = new Array(1, 2, 3, 4, 5);	
+      	print_scores_chart(arrs);
+	arrs = new Array(10, 1, 10, 1, 5, 5);
+	print_scores_chart(arrs);
+	arrs = new Array(5, 2, 2, 9, 3, 5, 9);
+	print_scores_chart(arrs);
+    </script>
+</head>
+<body>
+</body>
+</html>

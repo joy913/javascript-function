@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+	var arrs = new Array(4);
+	arrs[0] = new Array(4);
+	arrs[1] = new Array(4);
+	arrs[2] = new Array(4);
+	arrs[3] = new Array(4);
+	function height(str, str2, str3) {
+		arrs = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+		var sstr = "";
+		var cnt = 0;
+        	for(var i = 0 ; i < 4; i++){
+			for(var j = 0; j < 4; j++) {
+				if(str.length == cnt) break;
+				if(str.charAt(cnt) == "\n"){
+					cnt++; 
+					if(j != 0) break;
+				}
+				if(str.charAt(cnt) == 'O') arrs[i][j] += 1;
+				cnt++;
+			}
+			if(str.length == cnt) break;
+		}
+		cnt = 0;
+		for(var i = 0; i < 4; i++){
+			for(var j = 0; j < 4; j++) {
+				if(str2.length == cnt) break;
+				if(str2.charAt(cnt) == "\n"){
+	    				cnt++;
+					if(j != 0) break;
+				}
+				if(str2.charAt(cnt) == 'O') arrs[i][j] += 1;
+				cnt++;
+			}
+			if(str2.length == cnt) break;
+		}
+		cnt = 0;
+	    if(str3){
+		for(var i = 0; i < 4; i++){
+			for(var j = 0; j < 4; j++) {
+				if(str3.length == cnt) break;
+				if(str3.charAt(cnt) == "\n"){
+	    				cnt++;
+					if(j != 0) break;
+				}
+				if(str3.charAt(cnt) == 'O') arrs[i][j] += 1;
+				cnt++;
+			}
+			if(str3.length == cnt) break;
+		}
+	    }
+		for(var i = 0; i < 4; i++){
+			for(var j = 0; j < 4; j++) {
+				if(arrs[i][0] == 0) break;
+	    			if(j < 3) sstr += arrs[i][j] + " ";
+				else if(j == 3) sstr += arrs[i][j] + "\n";
+			}
+		}
+		console.log(sstr);
+		return sstr;
+	}
+      exepect(height('O', 'OOOO\nOOOO'), '2 1 1 1\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO'), '2 2 2 2\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1\n1 1 0 0');
+      exepect(height('O', 'OOOO\nOOOO', 'OOOO'), '3 2 2 2\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO', 'OOOO'), '3 3 3 3\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO', 'OOOO'), '3 3 2 2\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO', 'O\nO\nO\nO'), '3 2 1 1\n3 2 1 1\n2 1 0 0\n1 0 0 0');
+      exepect(height('O', 'O', 'O'), '3 0 0 0');
+      function exepect(l, r) {
+        if (l === r)
+         console.log('pass');
+        else
+         console.log('fail');
+      }
+    </script>
+</head>
+<body>
+</body>
+</html>
